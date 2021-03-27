@@ -12,3 +12,6 @@ h1 {
 * {
   font-family: "Gloria Hallelujah", cursive;
 }
+body {
+  background-color: rgb(124, 61, 61);
+}
