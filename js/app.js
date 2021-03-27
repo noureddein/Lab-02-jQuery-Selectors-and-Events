@@ -1,31 +1,31 @@
 'use strict';
-$(document).ready(function () {
 
-    function Pics(img) {
-        this.title = img.title;
-        this.image_url = img.image_url;
-        this.description = img.description;
-        this.keyword = img.keyword;
-        this.horns = img.horns;
-    }
+function Pics(img) {
+    this.title = img.title;
+    this.image_url = img.image_url;
+    this.description = img.description;
+    this.keyword = img.keyword;
+    this.horns = img.horns;
+}
 
-    Pics.prototype.render = function () {
-        $('main').append(`
+Pics.prototype.render = function () {
+    $('main').append(`
     <div class="a ${this.keyword}">
     <h4>${this.title}</h4>
     <img src="${this.image_url} ">
     <h5>${this.description}</h5>
     </div>`);
-    };
+};
 
-    const keywordArray = [];
-    Pics.prototype.renderByKeyword = function () {
-        console.log(keywordArray);
-        keywordArray.forEach(item => {
-            let $selectEl = $(`<option value=${item}>${item}</option>`);
-            $('select').append($selectEl);
-        });
-    };
+const keywordArray = [];
+Pics.prototype.renderByKeyword = function () {
+    console.log(keywordArray);
+    keywordArray.forEach(item => {
+        let $selectEl = $(`<option value=${item}>${item}</option>`);
+        $('select').append($selectEl);
+    });
+};
+$(document).ready(function () {
 
     const ajaxSettings = {
         method: 'get',
@@ -46,7 +46,7 @@ $(document).ready(function () {
         });
 
     $('#imgSelet').change(function () {
-        if ($(this).val() == 'default') {
+        if ($(this).val() === 'default') {
             $('.a').show();
         } else {
             $('.a').hide();
