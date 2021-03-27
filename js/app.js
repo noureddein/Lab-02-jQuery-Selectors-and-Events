@@ -26,31 +26,31 @@ Pics.prototype.renderByKeyword = function () {
     });
 };
 
-
-Pics.readJson = () => {
-    const ajaxSettings = {
-        method: 'get',
-        dataType: 'json'
-    };
-    let pictures;
-    $.ajax('../data/page-1.json', ajaxSettings)
-        .then(page => {
-            page.forEach(item => {
-                pictures = new Pics(item);
-                if (!keywordArray.includes(pictures.keyword)) {
-                    keywordArray.push(pictures.keyword);
-                }
-                pictures.render();
-
-            });
-            pictures.renderByKeyword();
-        });
-
-
-};
-$(() => Pics.readJson());
-
 $(document).ready(function () {
+    Pics.readJson = () => {
+        const ajaxSettings = {
+            method: 'get',
+            dataType: 'json'
+        };
+        let pictures;
+        $.ajax('../data/page-1.json', ajaxSettings)
+            .then(page => {
+                page.forEach(item => {
+                    pictures = new Pics(item);
+                    if (!keywordArray.includes(pictures.keyword)) {
+                        keywordArray.push(pictures.keyword);
+                    }
+                    pictures.render();
+
+                });
+                pictures.renderByKeyword();
+            });
+
+
+    };
+    $(() => Pics.readJson());
+
+
 
     $('#imgSelet').change(function () {
         if ($(this).val() == 'default') {
