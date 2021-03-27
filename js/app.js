@@ -53,5 +53,4 @@ $(document).ready(function () {
             $('.' + $(this).val()).show();
         }
     });
-
 });
